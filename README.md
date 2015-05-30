@@ -22,5 +22,10 @@ java -jar clock.jar [OPTIONS]
 -tz オプションで時計のタイムゾーンを指定できます．
 利用可能なタイムゾーンは，--more-help オプション(-hh)で閲覧できます．
 
+## コンパイル方法
+
+1. [args4j](http://args4j.kohsuke.org)をダウンロードし，args4j-x.x.jar を得る．
+2. build.xml を編集し，javacタスクのclasspathにargs4j-x.x.jarを指定する．
+3. antを実行する．
 
 

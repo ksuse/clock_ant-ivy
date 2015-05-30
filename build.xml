@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="clock_ant" default="archive" basedir=".">
+  <property name="src"       value="src/main" />
+  <property name="target"    value="target" />
+  <property name="dest"      value="${target}/classes" />
+  <property name="args4j"    value="args4j-2.32.jar" />
+
+  <target name="init" description="initialization">
+    <mkdir dir="${dest}" />
+  </target>
+
+  <target name="compile" depends="init">
+    <javac srcdir="${src}"
+           destdir="${dest}"
+           classpath="${args4j}"
+    />
+  </target>
+
+  <target name="archive" depends="compile">
+    <jar jarfile="${ant.project.name}.jar"
+         basedir="${target}/classes">
+      <manifest>
+        <attribute name="Main-Class" value="com.github.clock.Main" />
+        <attribute name="Class-Path"  value="${args4j}" />
+      </manifest>
+    </jar>
+  </target>
+  
+  <target name="clean">
+    <delete dir="${target}" />
+  </target>
+</project>
