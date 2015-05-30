@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<project name="clock_ant" default="archive" basedir=".">
+<project name="clock_ant_ivy" default="archive" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
   <property name="src"       value="src/main" />
   <property name="target"    value="target" />
   <property name="dest"      value="${target}/classes" />
   <property name="args4j"    value="args4j-2.32.jar" />
+  <property name="lib.dir"   value="lib" />
+
+  <path id="lib.path.id">
+    <fileset dir="${lib.dir}" />
+  </path>
 
   <target name="init" description="initialization">
     <mkdir dir="${dest}" />
   </target>
 
-  <target name="compile" depends="init">
+  <target name="ivy" depends="init">
+    <mkdir dir="${lib.dir}" />
+    <ivy:retrieve />
+  </target>
+
+  <target name="compile" depends="init, ivy">
     <javac srcdir="${src}"
            destdir="${dest}"
-           classpath="${args4j}"
+           classpathref="lib.path.id"
     />
   </target>
 
@@ -29,5 +39,7 @@
   
   <target name="clean">
     <delete dir="${target}" />
+    <delete dir="${lib.dir}" />
+    <delete file="clock_ant_ivy.jar" />
   </target>
 </project>

@@ -24,8 +24,11 @@ java -jar clock.jar [OPTIONS]
 
 ## コンパイル方法
 
-1. [args4j](http://args4j.kohsuke.org)をダウンロードし，args4j-x.x.jar を得る．
-2. build.xml を編集し，javacタスクのclasspathにargs4j-x.x.jarを指定する．
-3. antを実行する．
+1. antを実行する．
+
+## その他．
+
+このプロジェクトをコンパイルするには，[apache ivy](http://ant.apache.org/ivy/)のインストールが必要です．
+また，ivy-x.x.x.jar を ant の lib もしくは，~/.ant/lib 以下にコピーしておく必要があります．
 
 
